@@ -1,0 +1,261 @@
+/* CSS Variables for Theme Management */
+:root {
+  /* Light theme colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #282c34;
+  --text-secondary: #61dafb;
+  --border-color: #e9ecef;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  /* Dark theme colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #282c34;
+  --text-primary: #ffffff;
+  --text-secondary: #61dafb;
+  --border-color: #404040;
+  --button-bg: #0056b3;
+  --button-text: #ffffff;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.App-link {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0.9;
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+/* === TIC TAC TOE CUSTOM STYLES === */
+.ttt-app-root {
+  min-height: 100vh;
+  background: var(--bg-primary, #fff);
+  color: var(--text-primary, #222);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background .2s, color .2s;
+}
+.ttt-game-container {
+  background: var(--bg-secondary, #f8f9fa);
+  padding: 32px 26px;
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px var(--border-color, #eee), 0 2px 18px 0 rgba(40, 44, 52, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 310px;
+  max-width: 360px;
+  margin: 40px auto;
+}
+
+.ttt-title {
+  font-size: 2.0rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: var(--primary, #1976d2);
+  letter-spacing: .04em;
+}
+
+.ttt-status {
+  font-size: 1.2rem;
+  margin-bottom: 22px;
+  font-weight: 500;
+  min-height: 2em;
+  color: var(--text-primary, #222);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ttt-turn, .ttt-winner {
+  font-weight: 700;
+  color: var(--primary, #1976d2);
+  font-size: 1.22em;
+  margin-right: 0.25em;
+}
+
+.ttt-winner {
+  color: var(--accent, #ff9800);
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 62px);
+  grid-template-rows: repeat(3, 62px);
+  gap: 10px;
+  margin-bottom: 28px;
+  margin-top: 10px;
+}
+
+.ttt-square {
+  width: 62px;
+  height: 62px;
+  background: #fff;
+  border: 2px solid var(--border-color, #e9ecef);
+  border-radius: 11px;
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: var(--secondary, #424242);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .18s, border-color .15s;
+  outline: none;
+  box-shadow: none;
+  user-select: none;
+}
+.ttt-square:focus-visible {
+  border-color: var(--primary, #1976d2);
+}
+.ttt-square:hover:not(:disabled):not(.highlight) {
+  background: var(--bg-secondary, #f1f7fe);
+  border-color: var(--primary, #1976d2);
+}
+.ttt-square:disabled {
+  cursor: default;
+  opacity: 0.68;
+  background: #f6f6f6;
+}
+.ttt-square.highlight {
+  background: var(--accent, #ffe8c1);
+  border-color: var(--accent, #ff9800);
+  color: var(--accent, #ff9800);
+}
+
+.ttt-reset-btn {
+  margin: 0 auto 0;
+  display: block;
+  padding: 11px 0;
+  width: 92%;
+  max-width: 222px;
+  background: var(--button-bg, #1976d2);
+  color: var(--button-text, #fff);
+  border: none;
+  border-radius: 7px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s;
+  box-shadow: 0 1.5px 5px rgba(25, 118, 210, 0.09);
+  letter-spacing: .02em;
+}
+.ttt-reset-btn:hover, .ttt-reset-btn:focus-visible {
+  background: #1356a2;
+  transform: translateY(-1.5px) scale(1.03);
+}
+.ttt-reset-btn:active {
+  background: #0e427b;
+}
+
+.ttt-meta {
+  font-size: 0.94em;
+  color: var(--border-color, #bababa);
+  margin-top: 0.7em;
+  text-align: center;
+}
+.ttt-credits {
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .ttt-board {
+    grid-template-columns: repeat(3, 42px);
+    grid-template-rows: repeat(3, 42px);
+    gap: 8px;
+  }
+  .ttt-square {
+    width: 42px;
+    height: 42px;
+    font-size: 1.28rem;
+  }
+  .ttt-title {
+    font-size: 1.4rem;
+  }
+  .ttt-game-container {
+    padding: 15px 4px;
+    min-width: initial;
+    max-width: 98vw;
+  }
+}
